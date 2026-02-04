@@ -1,0 +1,229 @@
+<section class="solutions" aria-label="Nos solutions pour vos ambitions">
+  <h2>Nos solutions pour vos ambitions</h2>
+  <div class="solutions-grid">
+    <a
+      class="solution-card"
+      href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/incubation-accelration-et-accompagnement-Ql6wrHl23EawsfXj.png"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/incubation-accelration-et-accompagnement-Ql6wrHl23EawsfXj.png"
+        alt="Incubation, accélération et accompagnement"
+        loading="lazy"
+      />
+      <div class="solution-info">
+        <h3>Incubation & accompagnement</h3>
+        <span class="solution-cta">Découvrir</span>
+      </div>
+    </a>
+    <a
+      class="solution-card"
+      href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/formations-pratiques-et-certifiantes-aWF00KYZGGoNOxBX.png"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/formations-pratiques-et-certifiantes-aWF00KYZGGoNOxBX.png"
+        alt="Formations pratiques et certifiantes"
+        loading="lazy"
+      />
+      <div class="solution-info">
+        <h3>Formations pratiques</h3>
+        <span class="solution-cta">S’inscrire</span>
+      </div>
+    </a>
+    <a
+      class="solution-card"
+      href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/coworking-domiciliation-8IAAO7TMNFpopMRr.png"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/coworking-domiciliation-8IAAO7TMNFpopMRr.png"
+        alt="Coworking et domiciliation"
+        loading="lazy"
+      />
+      <div class="solution-info">
+        <h3>Coworking & domiciliation</h3>
+        <span class="solution-cta">Réserver</span>
+      </div>
+    </a>
+    <a
+      class="solution-card"
+      href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/agence-creative-et-communication-FkVEFZ6UUpUBz8jm.png"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/agence-creative-et-communication-FkVEFZ6UUpUBz8jm.png"
+        alt="Agence créative et communication"
+        loading="lazy"
+      />
+      <div class="solution-info">
+        <h3>Agence créative</h3>
+        <span class="solution-cta">En savoir plus</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+
+  .solutions {
+    font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+    background: #ffffff;
+    padding: 52px 20px 72px;
+    text-align: center;
+  }
+
+  .solutions h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 28px;
+    color: #0b0d2c;
+  }
+
+  .solutions-grid {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    height: 420px;
+  }
+
+  .solution-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: clamp(200px, 20vw, 220px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: inherit;
+    transform: translate(-50%, 18px) scale(1);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+
+  .solution-card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    display: block;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .solution-info {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px 12px 12px;
+    box-shadow: 0 10px 20px rgba(11, 13, 44, 0.08);
+  }
+
+  .solution-info h3 {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: #0b0d2c;
+  }
+
+  .solution-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #ffc400;
+    color: #08283a;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .solutions.is-visible .solution-card {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--spread-x)), 0);
+  }
+
+  .solution-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .solution-card:hover {
+    transform: translate(calc(-50% + var(--spread-x)), -10px);
+  }
+
+  .solution-card:hover::after {
+    opacity: 1;
+  }
+
+  .solution-card:focus-visible {
+    outline: 3px solid #ffc400;
+    outline-offset: 4px;
+  }
+
+  .solution-card:nth-child(1) {
+    --spread-x: -390px;
+    transition-delay: 0.1s;
+  }
+
+  .solution-card:nth-child(2) {
+    --spread-x: -130px;
+    transition-delay: 0.25s;
+  }
+
+  .solution-card:nth-child(3) {
+    --spread-x: 130px;
+    transition-delay: 0.4s;
+  }
+
+  .solution-card:nth-child(4) {
+    --spread-x: 390px;
+    transition-delay: 0.55s;
+  }
+
+  @media (max-width: 900px) {
+    .solutions-grid {
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .solution-card {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      transform: translateY(12px) scale(0.98);
+    }
+
+    .solutions.is-visible .solution-card {
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector(".solutions");
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+  })();
+</script>
