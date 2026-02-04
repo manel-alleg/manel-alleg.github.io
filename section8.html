@@ -1,0 +1,264 @@
+<section class="experience" aria-label="Nous savons ce que vous vivez">
+  <h2>Nous savons ce que vous vivez</h2>
+
+  <div class="experience-grid">
+    <article class="experience-card" data-title="Ce que vous vivez">
+      <button class="experience-title" type="button" aria-expanded="false" data-label="Ce que vous vivez">
+        Ce que vous vivez
+      </button>
+      <div class="experience-body is-hidden">
+        <p>
+          Trop de théorie, pas assez de pratique. Vous apprenez… mais vous ne savez
+          pas appliquer. Vous travaillez chez vous ou dans un café bruyant, sans
+          productivité ni cadre.
+        </p>
+        <p>
+          Vous avez une marque invisible, pas de visibilité sur les réseaux. Vos idées
+          sont intéressantes, mais sans structure ni accompagnement pour les transformer
+          en projet.
+        </p>
+      </div>
+    </article>
+
+    <article class="experience-card" data-title="Ce que vous ressentez">
+      <button class="experience-title" type="button" aria-expanded="false" data-label="Ce que vous ressentez">
+        Ce que vous ressentez
+      </button>
+      <div class="experience-body is-hidden">
+        <p>
+          Sentiment de ne pas être prêt pour le marché du travail. Impression d’être
+          isolé, seul avec ses tâches et ses doutes.
+        </p>
+        <p>
+          Frustration de voir des concurrents réussir alors que vous restez invisible.
+          Découragement face à l’absence de cadre clair et de soutien.
+        </p>
+      </div>
+    </article>
+
+    <article class="experience-card" data-title="Ce que vous n’acceptez pas">
+      <button class="experience-title" type="button" aria-expanded="false" data-label="Ce que vous n’acceptez pas">
+        Ce que vous n’acceptez pas
+      </button>
+      <div class="experience-body is-hidden">
+        <p>
+          Que des jeunes talentueux ne trouvent pas d’espace pour apprendre des
+          compétences réelles. Que ceux qui veulent avancer soient freinés faute d’une
+          équipe.
+        </p>
+        <p>
+          Qu’une bonne idée reste dans l’ombre faute de visibilité. Que des projets
+          prometteurs échouent par manque d’accompagnement.
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <p class="experience-quote">
+    “Personne ne devrait rester seul pour apprendre, travailler ou réaliser ses rêves”
+  </p>
+
+  <button class="experience-cta" type="button">Découvrir Orbit</button>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+
+  :root {
+    --blue-900: #0b0d2c;
+    --blue-700: #18245a;
+    --yellow: #ffc400;
+    --white: #ffffff;
+  }
+
+  .experience {
+    font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+    text-align: center;
+    color: var(--blue-900);
+    padding: 56px 20px 80px;
+    background: #ffffff;
+  }
+
+  .experience h2 {
+    font-size: clamp(32px, 4vw, 44px);
+    margin-bottom: 32px;
+    letter-spacing: 0.01em;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 980px;
+    margin: 0 auto 32px;
+    perspective: 1200px;
+  }
+
+  .experience-card {
+    background: #0e1538;
+    border-radius: 24px;
+    padding: 24px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    box-shadow: 0 18px 40px rgba(11, 13, 44, 0.2);
+  }
+
+  .experience-card:not(.is-open) {
+    justify-content: center;
+  }
+
+  .experience-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(255, 196, 0, 0.22), transparent 55%);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .experience-title {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    color: var(--yellow);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .experience-card.is-open .experience-title {
+    transform: scale(0.9);
+    color: #ffe28a;
+  }
+
+  .experience-body {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    min-height: 150px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    width: 100%;
+  }
+
+  .experience-body p + p {
+    margin-top: 12px;
+  }
+
+  .experience-body.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 0;
+  }
+
+  .experience-quote {
+    font-weight: 600;
+    color: #0f6f96;
+    margin: 0 auto 18px;
+    max-width: 720px;
+    font-size: clamp(16px, 2.2vw, 19px);
+    position: relative;
+    padding: 12px 18px;
+  }
+
+  .experience-quote::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(14, 91, 127, 0.1), rgba(14, 91, 127, 0.5), rgba(14, 91, 127, 0.1));
+    transform: translateX(-50%);
+  }
+
+  .experience-cta {
+    border: none;
+    background: var(--yellow);
+    color: #08283a;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-out;
+  }
+
+  .experience-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .experience-card {
+      padding: 20px;
+    }
+
+    .experience-body {
+      min-height: auto;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const cards = document.querySelectorAll(".experience-card");
+
+    cards.forEach((card) => {
+      const titleButton = card.querySelector(".experience-title");
+      const body = card.querySelector(".experience-body");
+      const titleText = card.dataset.title || "";
+      if (titleButton) {
+        titleButton.textContent = titleButton.dataset.label || titleText;
+      }
+
+      if (titleButton) {
+        titleButton.addEventListener("click", () => {
+          const isOpen = card.classList.toggle("is-open");
+          titleButton?.setAttribute("aria-expanded", String(isOpen));
+          if (isOpen) {
+            body?.classList.remove("is-hidden");
+          } else {
+            body?.classList.add("is-hidden");
+          }
+        });
+      }
+
+      card.addEventListener("mousemove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const relX = (event.clientX - rect.left) / rect.width - 0.5;
+        const relY = (event.clientY - rect.top) / rect.height - 0.5;
+        const tiltX = (-relY * 6).toFixed(2);
+        const tiltY = (relX * 8).toFixed(2);
+        card.style.setProperty("--tilt-x", `${tiltX}deg`);
+        card.style.setProperty("--tilt-y", `${tiltY}deg`);
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.setProperty("--tilt-x", "0deg");
+        card.style.setProperty("--tilt-y", "0deg");
+      });
+    });
+  })();
+</script>

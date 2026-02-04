@@ -1,0 +1,304 @@
+<section class="orbit-story">
+  <div class="orbit-media orbit-media-left">
+    <img
+      class="orbit-character"
+      src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/eft-zcU4yn33ONTriql0.png"
+      alt="Figure de gauche"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="orbit-content">
+    <p class="orbit-kicker">Chez Orbit</p>
+    <h2 data-text="On sait ce que ça veut dire de vouloir plus">On sait ce que ça veut dire de vouloir plus</h2>
+    <p class="orbit-subtitle" data-text="Nous sommes comme vous : ambitieux, curieux, courageux…">
+      Nous sommes comme vous : ambitieux, curieux, courageux…
+    </p>
+
+    <div class="orbit-text">
+      <p data-text="Orbit est née de la même envie qui vous anime : apprendre, créer, avancer, collaborer.">
+        Orbit est née de la même envie qui vous anime : apprendre, créer, avancer, collaborer.
+      </p>
+      <p>
+        Nous savons que la route est pleine de doutes, de questions et de moments où l’on
+        cherche sa place et c’est normal !
+      </p>
+      <p>
+        Orbit est une équipe et une communauté qui pensent comme vous, qui parlent votre langage,
+        et qui transforment vos envies en expériences concrètes.
+      </p>
+    </div>
+
+    <button class="orbit-cta" type="button">Découvrir Orbit</button>
+  </div>
+
+  <div class="orbit-media orbit-media-right">
+    <img
+      class="orbit-character"
+      src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/right-rKTCjRdkPX891zb3.png"
+      alt="Figure de droite"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+
+  .orbit-story {
+    font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+    display: grid;
+    grid-template-columns: minmax(160px, 260px) minmax(280px, 1fr) minmax(160px, 260px);
+    align-items: center;
+    gap: 24px;
+    padding: 48px 24px 64px;
+    background: #ffffff;
+    color: #0b0d2c;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .orbit-story::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(255, 196, 0, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .orbit-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .orbit-kicker {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #1c4c7b;
+    margin-bottom: 8px;
+  }
+
+  .orbit-content h2 {
+    font-size: clamp(30px, 4.2vw, 46px);
+    margin: 0 0 12px;
+  }
+
+  .orbit-subtitle {
+    color: #1c4c7b;
+    font-weight: 600;
+    margin-bottom: 18px;
+    font-size: clamp(16px, 2.4vw, 22px);
+  }
+
+  .orbit-text {
+    max-width: 480px;
+    margin: 0 auto 24px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #26356a;
+  }
+
+  .orbit-text p + p {
+    margin-top: 12px;
+  }
+
+  .orbit-cta {
+    border: none;
+    background: #ffc400;
+    color: #08283a;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .orbit-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .orbit-media {
+    position: relative;
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1 / 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    transform: translateX(var(--meet-x, 0)) scale(var(--meet-scale, 2.4));
+    opacity: 0;
+    transition: transform 1.4s ease, opacity 1.4s ease;
+  }
+
+  .orbit-story.is-inview .orbit-media {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  .orbit-character {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    transform: translateX(var(--pop-x, 0)) translateY(var(--pop-y, 0)) scale(var(--pop-scale, 1));
+    transition: transform 0.4s ease;
+  }
+
+
+  .orbit-story.is-inview .orbit-character {
+    animation: popIn 0.8s ease both;
+  }
+
+  .orbit-story.is-typing .orbit-character {
+    transform: translateX(0) translateY(0) scale(1);
+    transition: transform 0.2s ease;
+  }
+
+  .orbit-media-left {
+    --pop-x: -24px;
+    --meet-x: 220px;
+    --meet-scale: 2.4;
+  }
+
+  .orbit-media-right {
+    --pop-x: 24px;
+    --meet-x: -220px;
+    --meet-scale: 2.4;
+  }
+
+  .orbit-story.is-inview .orbit-media-left .orbit-character,
+  .orbit-story.is-inview .orbit-media-right .orbit-character {
+    transform: translateX(0) translateY(0) scale(1.02);
+  }
+
+  .orbit-story.is-typing .orbit-media-left .orbit-character,
+  .orbit-story.is-typing .orbit-media-right .orbit-character {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: translateX(var(--pop-x, 0)) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1.02);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .orbit-story {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .orbit-media {
+      display: none;
+    }
+
+    .orbit-content {
+      order: 2;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector(".orbit-story");
+    if (!section) return;
+
+    const left = section.querySelector(".orbit-media-left");
+    const right = section.querySelector(".orbit-media-right");
+    const cta = section.querySelector(".orbit-cta");
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.classList.toggle("is-inview", entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            section.classList.add("is-settled");
+            startTyping();
+          }, 1100);
+        } else {
+          section.classList.remove("is-settled");
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(section);
+
+    const typeElements = Array.from(section.querySelectorAll("[data-text]"));
+    let typingStarted = false;
+
+    const typeElement = (element, speed = 22) =>
+      new Promise((resolve) => {
+        const text = element.dataset.text || element.textContent || "";
+        element.textContent = "";
+        let index = 0;
+        const tick = () => {
+          element.textContent += text[index];
+          index += 1;
+          if (index < text.length) {
+            setTimeout(tick, speed);
+          } else {
+            resolve();
+          }
+        };
+        tick();
+      });
+
+    const startTyping = async () => {
+      if (typingStarted) return;
+      typingStarted = true;
+      section.classList.add("is-typing");
+      for (const element of typeElements) {
+        await typeElement(element);
+      }
+      section.classList.remove("is-typing");
+    };
+
+    const updateTilt = (clientX, clientY) => {
+      const rect = section.getBoundingClientRect();
+      const relX = (clientX - rect.left) / rect.width - 0.5;
+      const relY = (clientY - rect.top) / rect.height - 0.5;
+      const tiltX = (-relY * 8).toFixed(2);
+      const tiltY = (relX * 10).toFixed(2);
+
+      left?.style.setProperty("--pop-x", `${-20 + relX * 18}px`);
+      left?.style.setProperty("--pop-y", `${relY * 12}px`);
+      right?.style.setProperty("--pop-x", `${20 + relX * 18}px`);
+      right?.style.setProperty("--pop-y", `${relY * 12}px`);
+
+      if (cta) {
+        cta.style.transform = `translateY(${relY * -4}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      }
+    };
+
+    const resetTilt = () => {
+      left?.style.setProperty("--pop-x", "-24px");
+      left?.style.setProperty("--pop-y", "0px");
+      right?.style.setProperty("--pop-x", "24px");
+      right?.style.setProperty("--pop-y", "0px");
+      if (cta) {
+        cta.style.transform = "translateY(0)";
+      }
+    };
+
+    const handlePointer = (event) => {
+      const touch = event.touches ? event.touches[0] : null;
+      updateTilt(touch ? touch.clientX : event.clientX, touch ? touch.clientY : event.clientY);
+    };
+
+    section.addEventListener("mousemove", handlePointer, { passive: true });
+    section.addEventListener("touchmove", handlePointer, { passive: true });
+    section.addEventListener("touchstart", handlePointer, { passive: true });
+    section.addEventListener("mouseleave", resetTilt);
+    section.addEventListener("touchend", resetTilt);
+  })();
+</script>
