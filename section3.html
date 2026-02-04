@@ -1,0 +1,202 @@
+<section class="trust-stats" aria-label="Ils nous ont fait confiance">
+  <h2>Ils nous ont fait confiance !</h2>
+  <div class="trust-grid">
+    <article class="trust-card" data-target="925">
+      <div class="trust-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="46" />
+          <circle class="ring-progress" cx="60" cy="60" r="46" />
+        </svg>
+        <span class="trust-dot"></span>
+        <span class="trust-value">0</span>
+      </div>
+      <p>Etudiants formés</p>
+    </article>
+
+    <article class="trust-card" data-target="146">
+      <div class="trust-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="46" />
+          <circle class="ring-progress" cx="60" cy="60" r="46" />
+        </svg>
+        <span class="trust-dot"></span>
+        <span class="trust-value">0</span>
+      </div>
+      <p>Entreprise<br />domicilies</p>
+    </article>
+
+    <article class="trust-card" data-target="23">
+      <div class="trust-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="46" />
+          <circle class="ring-progress" cx="60" cy="60" r="46" />
+        </svg>
+        <span class="trust-dot"></span>
+        <span class="trust-value">0</span>
+      </div>
+      <p>Projets incubés</p>
+    </article>
+
+    <article class="trust-card" data-target="300">
+      <div class="trust-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="46" />
+          <circle class="ring-progress" cx="60" cy="60" r="46" />
+        </svg>
+        <span class="trust-dot"></span>
+        <span class="trust-value">0</span>
+      </div>
+      <p>Coworkers</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+
+  .trust-stats {
+    font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+    background: #ffffff;
+    padding: 52px 20px 64px;
+    text-align: center;
+    color: #0b0d2c;
+  }
+
+  .trust-stats h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 34px;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .trust-card {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .trust-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  .trust-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: #e6e7f2;
+    stroke-width: 8;
+  }
+
+  .ring-progress {
+    fill: none;
+    stroke: #1f1fbf;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 289;
+    stroke-dashoffset: 289;
+    transition: stroke-dashoffset 1.2s ease;
+  }
+
+  .trust-dot {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffc400;
+    box-shadow: 0 0 0 6px rgba(255, 196, 0, 0.2);
+  }
+
+  .trust-value {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0b0d2c;
+  }
+
+  .trust-card p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1c2370;
+  }
+
+  .trust-card.is-animated .ring-progress {
+    stroke-dashoffset: var(--dash);
+  }
+
+  @media (max-width: 600px) {
+    .trust-ring {
+      width: 104px;
+      height: 104px;
+    }
+
+    .trust-value {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const cards = document.querySelectorAll(".trust-card");
+    if (!cards.length) return;
+
+    const total = 300;
+
+    const animateCard = (card) => {
+      const valueEl = card.querySelector(".trust-value");
+      const ring = card.querySelector(".ring-progress");
+      const target = Number(card.dataset.target) || 0;
+      const circumference = 2 * Math.PI * 46;
+      const progress = Math.min(target / total, 1);
+      const dash = circumference * (1 - progress);
+      card.style.setProperty("--dash", dash);
+      card.classList.add("is-animated");
+
+      const duration = 1200;
+      const start = performance.now();
+      const animate = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const current = Math.floor(t * target);
+        if (valueEl) {
+          valueEl.textContent = target >= 100 ? `+${current}` : `${current}`;
+        }
+        if (t < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      requestAnimationFrame(animate);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCard(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  })();
+</script>
