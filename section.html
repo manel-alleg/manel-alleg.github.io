@@ -32,10 +32,11 @@
         <span class="satellite satellite--three"></span>
         <span class="satellite satellite--four"></span>
       </div>
+      <canvas class="orbit-network" aria-hidden="true"></canvas>
       <div class="orbit-logo" role="img" aria-label="Logo Orbit">
         <img
-          src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/orbit-logo-A3Q1sGo2kJT0L9lL.png"
-          alt="Orbit Coworking & Training Space"
+          src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/chart-graphic-orbit-0.01-copy-iWSTSpRYzaXlPRCS.png"
+          alt="Orbit"
         />
       </div>
       <div class="orbit-pulse" aria-hidden="true"></div>
@@ -88,12 +89,14 @@
 
   .orbit-hero {
     position: relative;
-    min-height: 90vh;
+    min-height: 70vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     align-items: center;
-    gap: 48px;
-    padding: 80px 8vw 120px;
+    gap: 36px;
+    padding: 56px 6vw 72px;
+    max-width: 1180px;
+    margin: 0 auto;
   }
 
   .orbit-bg {
@@ -105,30 +108,32 @@
 
   .orbit-glow {
     position: absolute;
-    width: 520px;
-    height: 520px;
+    width: 620px;
+    height: 620px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(243, 198, 35, 0.2), transparent 70%);
-    top: -120px;
-    left: -140px;
+    background: radial-gradient(circle, rgba(10, 15, 45, 0.25), rgba(10, 15, 45, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: glowShift 12s ease-in-out infinite;
   }
 
   .orbit-glow--secondary {
-    width: 480px;
-    height: 480px;
-    right: -120px;
+    width: 520px;
+    height: 520px;
+    right: 50%;
     left: auto;
-    bottom: -160px;
+    bottom: 50%;
     top: auto;
-    background: radial-gradient(circle, rgba(10, 15, 45, 0.12), transparent 70%);
-    animation-delay: -6s;
+    transform: translate(50%, 50%);
+    background: radial-gradient(circle, rgba(9, 58, 105, 0.18), rgba(9, 58, 105, 0) 70%);
+    animation-delay: -5s;
   }
 
   .orbit-stars {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(10, 15, 45, 0.14) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(10, 15, 45, 0.12) 1px, transparent 1px);
     background-size: 120px 120px;
     opacity: 0.6;
     animation: starDrift 20s linear infinite;
@@ -181,14 +186,14 @@
 
   .orbit-cta {
     border: none;
-    background: var(--orbit-yellow);
-    color: var(--orbit-blue);
+    background: linear-gradient(135deg, #0a3d6b, #0e6ba6);
+    color: var(--orbit-white);
     padding: 14px 34px;
     border-radius: 999px;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 18px 30px rgba(10, 15, 45, 0.18);
+    box-shadow: 0 18px 30px rgba(10, 61, 107, 0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -199,7 +204,7 @@
 
   .orbit-stage {
     position: relative;
-    width: min(460px, 80vw);
+    width: min(420px, 82vw);
     aspect-ratio: 1;
     margin: 0 auto;
     z-index: 1;
@@ -208,11 +213,11 @@
   }
 
   .orbit-logo {
-    width: min(280px, 70%);
-    padding: 30px 34px;
+    width: min(240px, 65%);
+    padding: 24px 26px;
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 36px;
-    box-shadow: 0 40px 80px rgba(10, 15, 45, 0.15);
+    border-radius: 999px;
+    box-shadow: 0 24px 50px rgba(10, 15, 45, 0.12);
     display: grid;
     place-items: center;
     transform: translateZ(0);
@@ -225,7 +230,8 @@
 
   .orbit-rings,
   .orbit-satellites,
-  .orbit-pulse {
+  .orbit-pulse,
+  .orbit-network {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -242,28 +248,35 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    border: 1px solid var(--ring-color, rgba(10, 15, 45, 0.12));
+    border: 1px solid var(--ring-color, rgba(10, 61, 107, 0.25));
     animation: ringRotate var(--ring-duration, 18s) linear infinite;
     animation-direction: var(--ring-direction, normal);
   }
 
   .orbit-ring--outer {
     inset: -30px;
-    --ring-color: rgba(10, 15, 45, 0.12);
+    --ring-color: rgba(10, 61, 107, 0.18);
     --ring-duration: 18s;
   }
 
   .orbit-ring--mid {
     inset: 20px;
-    --ring-color: rgba(243, 198, 35, 0.28);
+    --ring-color: rgba(20, 114, 177, 0.35);
     --ring-duration: 14s;
     --ring-direction: reverse;
   }
 
   .orbit-ring--inner {
     inset: 70px;
-    --ring-color: rgba(10, 15, 45, 0.2);
+    --ring-color: rgba(10, 61, 107, 0.25);
     --ring-duration: 10s;
+  }
+
+  .orbit-network {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.65;
   }
 
   .satellite {
@@ -302,17 +315,17 @@
     content: "";
     position: absolute;
     inset: 50%;
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    border: 1px solid rgba(243, 198, 35, 0.35);
+    border: 1px solid rgba(20, 114, 177, 0.35);
     transform: translate(-50%, -50%);
     animation: pulse 3.6s ease-in-out infinite;
   }
 
   .orbit-story {
-    padding: 120px 8vw;
-    background: #f8f9fc;
+    padding: 90px 6vw;
+    background: radial-gradient(circle at 50% 0%, rgba(10, 61, 107, 0.08), #f8f9fc 55%);
   }
 
   .orbit-story-content {
@@ -356,7 +369,7 @@
     background: white;
     border-radius: 20px;
     padding: 22px 20px;
-    box-shadow: 0 16px 40px rgba(10, 15, 45, 0.08);
+    box-shadow: 0 16px 40px rgba(10, 61, 107, 0.12);
     transform: translateY(20px);
     opacity: 0;
     transition: transform 0.6s ease, opacity 0.6s ease;
@@ -379,10 +392,10 @@
   @keyframes glowShift {
     0%,
     100% {
-      transform: translate(0, 0) scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
     50% {
-      transform: translate(40px, 20px) scale(1.1);
+      transform: translate(calc(-50% + 30px), calc(-50% + 20px)) scale(1.1);
     }
   }
 
@@ -446,8 +459,82 @@
     const rings = document.querySelectorAll(".orbit-ring");
     const satellites = document.querySelectorAll(".satellite");
     const highlightCards = document.querySelectorAll(".orbit-highlights div");
+    const networkCanvas = document.querySelector(".orbit-network");
 
     if (!stage) return;
+
+    let networkCtx = null;
+    let nodes = [];
+    let animationFrame = null;
+    const pointer = { x: 0.5, y: 0.5, active: false };
+
+    const initNetwork = () => {
+      if (!networkCanvas) return;
+      networkCtx = networkCanvas.getContext("2d");
+      const { width, height } = stage.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      networkCanvas.width = Math.max(1, Math.floor(width * dpr));
+      networkCanvas.height = Math.max(1, Math.floor(height * dpr));
+      networkCanvas.style.width = `${width}px`;
+      networkCanvas.style.height = `${height}px`;
+      networkCtx.setTransform(1, 0, 0, 1, 0, 0);
+      networkCtx.scale(dpr, dpr);
+
+      const count = Math.round(Math.min(32, Math.max(18, width / 18)));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: height * 0.55 + Math.random() * height * 0.4,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: 1.6 + Math.random() * 1.6,
+      }));
+    };
+
+    const drawNetwork = () => {
+      if (!networkCtx || !networkCanvas) return;
+      const { width, height } = stage.getBoundingClientRect();
+      networkCtx.clearRect(0, 0, width, height);
+      networkCtx.save();
+      networkCtx.globalCompositeOperation = "lighter";
+      networkCtx.strokeStyle = "rgba(14, 107, 166, 0.18)";
+      networkCtx.fillStyle = "rgba(10, 61, 107, 0.45)";
+
+      nodes.forEach((node) => {
+        node.x += node.vx + (pointer.active ? (pointer.x - 0.5) * 0.2 : 0);
+        node.y += node.vy + (pointer.active ? (pointer.y - 0.5) * 0.2 : 0);
+
+        if (node.x < 0 || node.x > width) node.vx *= -1;
+        if (node.y < height * 0.45 || node.y > height) node.vy *= -1;
+      });
+
+      for (let i = 0; i < nodes.length; i += 1) {
+        const a = nodes[i];
+        networkCtx.beginPath();
+        networkCtx.arc(a.x, a.y, a.radius, 0, Math.PI * 2);
+        networkCtx.fill();
+
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 120) {
+            const alpha = 1 - dist / 120;
+            networkCtx.strokeStyle = `rgba(14, 107, 166, ${0.18 * alpha})`;
+            networkCtx.beginPath();
+            networkCtx.moveTo(a.x, a.y);
+            networkCtx.lineTo(b.x, b.y);
+            networkCtx.stroke();
+          }
+        }
+      }
+
+      networkCtx.restore();
+      animationFrame = requestAnimationFrame(drawNetwork);
+    };
+
+    initNetwork();
+    drawNetwork();
 
     const animateOrbit = (event) => {
       const rect = stage.getBoundingClientRect();
@@ -459,6 +546,9 @@
       const tiltY = relX * 12;
 
       stage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      pointer.x = (clientX - rect.left) / rect.width;
+      pointer.y = (clientY - rect.top) / rect.height;
+      pointer.active = true;
 
       rings.forEach((ring, index) => {
         const offset = (index + 1) * 6;
@@ -480,12 +570,20 @@
       satellites.forEach((satellite) => {
         satellite.style.transform = "translate(0, 0)";
       });
+      pointer.active = false;
     };
 
     stage.addEventListener("mousemove", animateOrbit, { passive: true });
     stage.addEventListener("mouseleave", resetOrbit);
     stage.addEventListener("touchmove", animateOrbit, { passive: true });
     stage.addEventListener("touchend", resetOrbit);
+    window.addEventListener("resize", () => {
+      if (networkCanvas && networkCtx) {
+        cancelAnimationFrame(animationFrame);
+        initNetwork();
+        drawNetwork();
+      }
+    });
 
     const observer = new IntersectionObserver(
       (entries) => {
