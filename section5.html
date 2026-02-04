@@ -1,0 +1,165 @@
+<section class="solutions" aria-label="Nos solutions pour vos ambitions">
+  <h2>Nos solutions pour vos ambitions</h2>
+  <div class="solutions-grid">
+    <a class="solution-card" href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662506-ZLVmUoEDsB131tA6.png" target="_blank" rel="noreferrer">
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662506-ZLVmUoEDsB131tA6.png"
+        alt="Formations pratiques et certifiantes"
+        loading="lazy"
+      />
+    </a>
+    <a class="solution-card" href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662505-jmYFjT4hmwFc6FYn.png" target="_blank" rel="noreferrer">
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662505-jmYFjT4hmwFc6FYn.png"
+        alt="Coworking et domiciliation"
+        loading="lazy"
+      />
+    </a>
+    <a class="solution-card" href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662504-2TEi86R6en5ZQ46T.png" target="_blank" rel="noreferrer">
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662504-2TEi86R6en5ZQ46T.png"
+        alt="Agence créative et communication"
+        loading="lazy"
+      />
+    </a>
+    <a class="solution-card" href="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662503-djtY3pdEYFmv8jIv.png" target="_blank" rel="noreferrer">
+      <img
+        src="https://assets.zyrosite.com/tPWPZ3kEpjHdFO9F/group-2085662503-djtY3pdEYFmv8jIv.png"
+        alt="Incubation, Accélération et accompagnement"
+        loading="lazy"
+      />
+    </a>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+
+  .solutions {
+    font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+    background: #ffffff;
+    padding: 52px 20px 72px;
+    text-align: center;
+  }
+
+  .solutions h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 28px;
+    color: #0b0d2c;
+  }
+
+  .solutions-grid {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    height: 340px;
+  }
+
+  .solution-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: clamp(200px, 20vw, 220px);
+    aspect-ratio: 3 / 4;
+    display: block;
+    border-radius: 18px;
+    overflow: hidden;
+    transform: translate(-50%, 18px) scale(1);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+
+  .solution-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .solutions.is-visible .solution-card {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--spread-x)), 0);
+  }
+
+  .solution-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .solution-card:hover {
+    transform: translate(calc(-50% + var(--spread-x)), -10px);
+  }
+
+  .solution-card:hover::after {
+    opacity: 1;
+  }
+
+  .solution-card:focus-visible {
+    outline: 3px solid #ffc400;
+    outline-offset: 4px;
+  }
+
+  .solution-card:nth-child(1) {
+    --spread-x: -390px;
+    transition-delay: 0.1s;
+  }
+
+  .solution-card:nth-child(2) {
+    --spread-x: -130px;
+    transition-delay: 0.25s;
+  }
+
+  .solution-card:nth-child(3) {
+    --spread-x: 130px;
+    transition-delay: 0.4s;
+  }
+
+  .solution-card:nth-child(4) {
+    --spread-x: 390px;
+    transition-delay: 0.55s;
+  }
+
+  @media (max-width: 900px) {
+    .solutions-grid {
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .solution-card {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      transform: translateY(12px) scale(0.98);
+    }
+
+    .solutions.is-visible .solution-card {
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector(".solutions");
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+  })();
+</script>
