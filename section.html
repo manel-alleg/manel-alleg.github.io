@@ -43,31 +43,6 @@
     </div>
   </div>
 
-  <section class="orbit-story">
-    <div class="orbit-story-content">
-      <h2>Une géneration co-</h2>
-      <h3>au coeur du changment</h3>
-      <p>
-        Chaque orbite commence par une rencontre. Orbit met en mouvement les talents
-        de demain avec des mentors, des défis concrets et des espaces de travail qui
-        inspirent l'action.
-      </p>
-      <div class="orbit-highlights">
-        <div>
-          <span>+120</span>
-          <p>Ateliers et bootcamps créatifs chaque année.</p>
-        </div>
-        <div>
-          <span>24/7</span>
-          <p>Accès à un espace qui s'adapte à vos rythmes.</p>
-        </div>
-        <div>
-          <span>6</span>
-          <p>Communautés pour apprendre, bâtir et partager.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 </section>
 
 <style>
@@ -78,6 +53,10 @@
     --orbit-deep: #06091d;
     --orbit-yellow: #f3c623;
     --orbit-white: #ffffff;
+    --glow-x: 50%;
+    --glow-y: 50%;
+    --glow-x-2: 60%;
+    --glow-y-2: 40%;
   }
 
   .orbit-landing {
@@ -89,13 +68,13 @@
 
   .orbit-hero {
     position: relative;
-    min-height: 70vh;
+    min-height: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     align-items: center;
-    gap: 36px;
-    padding: 56px 6vw 72px;
-    max-width: 1180px;
+    gap: 28px;
+    padding: 40px 6vw 48px;
+    max-width: 1080px;
     margin: 0 auto;
   }
 
@@ -104,30 +83,31 @@
     inset: 0;
     overflow: hidden;
     z-index: 0;
+    background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(243, 198, 35, 0.24), transparent 60%);
   }
 
   .orbit-glow {
     position: absolute;
-    width: 620px;
-    height: 620px;
+    width: 520px;
+    height: 520px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(10, 15, 45, 0.25), rgba(10, 15, 45, 0) 70%);
-    top: 50%;
-    left: 50%;
+    background: radial-gradient(circle, rgba(243, 198, 35, 0.28), rgba(243, 198, 35, 0) 70%);
+    top: var(--glow-y);
+    left: var(--glow-x);
     transform: translate(-50%, -50%);
     animation: glowShift 12s ease-in-out infinite;
   }
 
   .orbit-glow--secondary {
-    width: 520px;
-    height: 520px;
-    right: 50%;
-    left: auto;
-    bottom: 50%;
-    top: auto;
+    width: 420px;
+    height: 420px;
+    right: auto;
+    left: var(--glow-x-2);
+    bottom: auto;
+    top: var(--glow-y-2);
     transform: translate(50%, 50%);
-    background: radial-gradient(circle, rgba(9, 58, 105, 0.18), rgba(9, 58, 105, 0) 70%);
-    animation-delay: -5s;
+    background: radial-gradient(circle, rgba(10, 61, 107, 0.18), rgba(10, 61, 107, 0) 70%);
+    animation-delay: -4s;
   }
 
   .orbit-stars {
@@ -186,25 +166,25 @@
 
   .orbit-cta {
     border: none;
-    background: linear-gradient(135deg, #0a3d6b, #0e6ba6);
-    color: var(--orbit-white);
+    background: linear-gradient(135deg, #f6c62b, #f3b316);
+    color: var(--orbit-blue);
     padding: 14px 34px;
     border-radius: 999px;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 18px 30px rgba(10, 61, 107, 0.25);
+    box-shadow: 0 18px 30px rgba(243, 198, 35, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .orbit-cta:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 22px 36px rgba(10, 15, 45, 0.2);
+    box-shadow: 0 22px 36px rgba(243, 198, 35, 0.4);
   }
 
   .orbit-stage {
     position: relative;
-    width: min(420px, 82vw);
+    width: min(380px, 82vw);
     aspect-ratio: 1;
     margin: 0 auto;
     z-index: 1;
@@ -248,27 +228,27 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    border: 1px solid var(--ring-color, rgba(10, 61, 107, 0.25));
+    border: 1px solid var(--ring-color, rgba(10, 61, 107, 0.22));
     animation: ringRotate var(--ring-duration, 18s) linear infinite;
     animation-direction: var(--ring-direction, normal);
   }
 
   .orbit-ring--outer {
     inset: -30px;
-    --ring-color: rgba(10, 61, 107, 0.18);
+    --ring-color: rgba(10, 61, 107, 0.16);
     --ring-duration: 18s;
   }
 
   .orbit-ring--mid {
     inset: 20px;
-    --ring-color: rgba(20, 114, 177, 0.35);
+    --ring-color: rgba(243, 198, 35, 0.45);
     --ring-duration: 14s;
     --ring-direction: reverse;
   }
 
   .orbit-ring--inner {
     inset: 70px;
-    --ring-color: rgba(10, 61, 107, 0.25);
+    --ring-color: rgba(10, 61, 107, 0.28);
     --ring-duration: 10s;
   }
 
@@ -318,66 +298,9 @@
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    border: 1px solid rgba(20, 114, 177, 0.35);
+    border: 1px solid rgba(243, 198, 35, 0.5);
     transform: translate(-50%, -50%);
     animation: pulse 3.6s ease-in-out infinite;
-  }
-
-  .orbit-story {
-    padding: 90px 6vw;
-    background: radial-gradient(circle at 50% 0%, rgba(10, 61, 107, 0.08), #f8f9fc 55%);
-  }
-
-  .orbit-story-content {
-    max-width: 820px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .orbit-story h2 {
-    font-size: clamp(40px, 6vw, 72px);
-    margin-bottom: 8px;
-  }
-
-  .orbit-story h3 {
-    font-size: clamp(34px, 5vw, 60px);
-    color: var(--orbit-yellow);
-    margin-bottom: 24px;
-  }
-
-  .orbit-story p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: rgba(10, 15, 45, 0.8);
-    margin-bottom: 40px;
-  }
-
-  .orbit-highlights {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
-  }
-
-  .orbit-highlights span {
-    font-size: 32px;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  .orbit-highlights div {
-    background: white;
-    border-radius: 20px;
-    padding: 22px 20px;
-    box-shadow: 0 16px 40px rgba(10, 61, 107, 0.12);
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
-  }
-
-  .orbit-highlights div.is-visible {
-    transform: translateY(0);
-    opacity: 1;
   }
 
   @keyframes ringRotate {
@@ -395,7 +318,7 @@
       transform: translate(-50%, -50%) scale(1);
     }
     50% {
-      transform: translate(calc(-50% + 30px), calc(-50% + 20px)) scale(1.1);
+      transform: translate(calc(-50% + 24px), calc(-50% + 14px)) scale(1.08);
     }
   }
 
@@ -433,10 +356,6 @@
   }
 
   @media (max-width: 900px) {
-    .orbit-hero {
-      padding-top: 60px;
-    }
-
     .orbit-stage {
       width: min(360px, 80vw);
     }
@@ -444,11 +363,7 @@
 
   @media (max-width: 600px) {
     .orbit-hero {
-      padding: 60px 6vw 100px;
-    }
-
-    .orbit-story {
-      padding: 80px 6vw;
+      padding: 48px 6vw 56px;
     }
   }
 </style>
@@ -458,7 +373,6 @@
     const stage = document.querySelector(".orbit-stage");
     const rings = document.querySelectorAll(".orbit-ring");
     const satellites = document.querySelectorAll(".satellite");
-    const highlightCards = document.querySelectorAll(".orbit-highlights div");
     const networkCanvas = document.querySelector(".orbit-network");
 
     if (!stage) return;
@@ -467,6 +381,9 @@
     let nodes = [];
     let animationFrame = null;
     const pointer = { x: 0.5, y: 0.5, active: false };
+    const glowTarget = { x: 0.5, y: 0.5, x2: 0.6, y2: 0.4 };
+    const glow = { x: 0.5, y: 0.5, x2: 0.6, y2: 0.4 };
+    let idleStart = performance.now();
 
     const initNetwork = () => {
       if (!networkCanvas) return;
@@ -490,18 +407,22 @@
       }));
     };
 
-    const drawNetwork = () => {
+    const drawNetwork = (now = performance.now()) => {
       if (!networkCtx || !networkCanvas) return;
       const { width, height } = stage.getBoundingClientRect();
       networkCtx.clearRect(0, 0, width, height);
       networkCtx.save();
       networkCtx.globalCompositeOperation = "lighter";
-      networkCtx.strokeStyle = "rgba(14, 107, 166, 0.18)";
-      networkCtx.fillStyle = "rgba(10, 61, 107, 0.45)";
+      networkCtx.strokeStyle = "rgba(14, 107, 166, 0.2)";
+      networkCtx.fillStyle = "rgba(243, 198, 35, 0.38)";
+
+      const idleWave = Math.sin(now / 1200) * 0.15;
 
       nodes.forEach((node) => {
-        node.x += node.vx + (pointer.active ? (pointer.x - 0.5) * 0.2 : 0);
-        node.y += node.vy + (pointer.active ? (pointer.y - 0.5) * 0.2 : 0);
+        const driftX = pointer.active ? (pointer.x - 0.5) * 0.3 : idleWave;
+        const driftY = pointer.active ? (pointer.y - 0.5) * 0.3 : Math.cos(now / 1400) * 0.12;
+        node.x += node.vx + driftX;
+        node.y += node.vy + driftY;
 
         if (node.x < 0 || node.x > width) node.vx *= -1;
         if (node.y < height * 0.45 || node.y > height) node.vy *= -1;
@@ -520,7 +441,8 @@
           const dist = Math.hypot(dx, dy);
           if (dist < 120) {
             const alpha = 1 - dist / 120;
-            networkCtx.strokeStyle = `rgba(14, 107, 166, ${0.18 * alpha})`;
+            const hue = i % 2 === 0 ? "14, 107, 166" : "243, 198, 35";
+            networkCtx.strokeStyle = `rgba(${hue}, ${0.24 * alpha})`;
             networkCtx.beginPath();
             networkCtx.moveTo(a.x, a.y);
             networkCtx.lineTo(b.x, b.y);
@@ -530,6 +452,22 @@
       }
 
       networkCtx.restore();
+      const idleTime = pointer.active ? 0 : Math.min(1, (now - idleStart) / 1200);
+      glow.x += (glowTarget.x - glow.x) * 0.06;
+      glow.y += (glowTarget.y - glow.y) * 0.06;
+      glow.x2 += (glowTarget.x2 - glow.x2) * 0.04;
+      glow.y2 += (glowTarget.y2 - glow.y2) * 0.04;
+
+      const liquidX = glow.x + Math.sin(now / 900) * 0.04 * idleTime;
+      const liquidY = glow.y + Math.cos(now / 1100) * 0.04 * idleTime;
+      const liquidX2 = glow.x2 + Math.cos(now / 1300) * 0.05 * idleTime;
+      const liquidY2 = glow.y2 + Math.sin(now / 1000) * 0.05 * idleTime;
+
+      stage.style.setProperty("--glow-x", `${liquidX * 100}%`);
+      stage.style.setProperty("--glow-y", `${liquidY * 100}%`);
+      stage.style.setProperty("--glow-x-2", `${liquidX2 * 100}%`);
+      stage.style.setProperty("--glow-y-2", `${liquidY2 * 100}%`);
+
       animationFrame = requestAnimationFrame(drawNetwork);
     };
 
@@ -549,6 +487,11 @@
       pointer.x = (clientX - rect.left) / rect.width;
       pointer.y = (clientY - rect.top) / rect.height;
       pointer.active = true;
+      idleStart = performance.now();
+      glowTarget.x = pointer.x;
+      glowTarget.y = pointer.y;
+      glowTarget.x2 = Math.min(1, pointer.x + 0.2);
+      glowTarget.y2 = Math.max(0, pointer.y - 0.15);
 
       rings.forEach((ring, index) => {
         const offset = (index + 1) * 6;
@@ -571,6 +514,11 @@
         satellite.style.transform = "translate(0, 0)";
       });
       pointer.active = false;
+      idleStart = performance.now();
+      glowTarget.x = 0.5;
+      glowTarget.y = 0.5;
+      glowTarget.x2 = 0.6;
+      glowTarget.y2 = 0.4;
     };
 
     stage.addEventListener("mousemove", animateOrbit, { passive: true });
@@ -585,19 +533,5 @@
       }
     });
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            highlightCards.forEach((card, index) => {
-              setTimeout(() => card.classList.add("is-visible"), index * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    highlightCards.forEach((card) => observer.observe(card));
   })();
 </script>
